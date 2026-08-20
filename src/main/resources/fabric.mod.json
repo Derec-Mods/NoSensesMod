@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "nosensesmod",
+  "version": "${version}",
+  "name": "NoSensesMod",
+  "description": "Mod for Youtube content creator PlazaMC",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/nosensesmod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "io.github.derexxd.nosensesmod.client.NosensesmodDataGenerator"
+    ],
+    "client": [
+      "io.github.derexxd.nosensesmod.client.NosensesmodClient"
+    ],
+    "main": [
+      "io.github.derexxd.nosensesmod.Nosensesmod"
+    ]
+  },
+  "mixins": [
+    "nosensesmod.mixins.json",
+    {
+      "config": "nosensesmod.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

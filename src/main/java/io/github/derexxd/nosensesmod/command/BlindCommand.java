@@ -2,6 +2,7 @@ package io.github.derexxd.nosensesmod.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
+import io.github.derexxd.nosensesmod.effect.BlindEffects;
 import io.github.derexxd.nosensesmod.state.BlindState;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.CommandManager;
@@ -21,6 +22,11 @@ public final class BlindCommand {
                                 .executes(context -> {
                                     ServerPlayerEntity target = EntityArgumentType.getPlayer(context, "player");
                                     boolean blinded = BlindState.toggle(target.getUuid());
+                                    if (blinded) {
+                                        BlindEffects.apply(target);
+                                    } else {
+                                        BlindEffects.remove(target);
+                                    }
                                     String key = blinded
                                             ? "command.nosensesmod.blind.enabled"
                                             : "command.nosensesmod.blind.disabled";

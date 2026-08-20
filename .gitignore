@@ -115,5 +115,9 @@ gradle-app.setting
 run/
 runs/
 
+# Project-local JDK used by gradlew (does not replace system Java)
+.jdk/
+
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar

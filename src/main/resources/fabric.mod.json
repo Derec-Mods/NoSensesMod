@@ -17,6 +17,9 @@
     ],
     "main": [
       "io.github.derexxd.nosensesmod.Nosensesmod"
+    ],
+    "voicechat": [
+      "io.github.derexxd.nosensesmod.voice.NoSensesVoicePlugin"
     ]
   },
   "mixins": [
@@ -31,5 +34,8 @@
     "fabric-api": "*",
     "minecraft": "${minecraft_version}",
     "java": ">=21"
+  },
+  "suggests": {
+    "voicechat": "*"
   }
 }

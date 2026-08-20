@@ -1,5 +1,6 @@
 package io.github.derexxd.nosensesmod;
 
+import io.github.derexxd.nosensesmod.chat.MuteChat;
 import io.github.derexxd.nosensesmod.command.BlindCommand;
 import io.github.derexxd.nosensesmod.command.DeafCommand;
 import io.github.derexxd.nosensesmod.command.MuteCommand;
@@ -25,6 +26,7 @@ public class Nosensesmod implements ModInitializer {
             DeafCommand.register(dispatcher);
         });
         BlindEffects.register();
+        MuteChat.register();
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
             MuteState.clear(handler.player.getUuid());
             BlindState.clear(handler.player.getUuid());

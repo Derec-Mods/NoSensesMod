@@ -4,6 +4,7 @@
   "package": "io.github.derexxd.nosensesmod.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "MessageCommandMixin"
   ],
   "injectors": {
     "defaultRequire": 1

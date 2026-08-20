@@ -1,6 +1,10 @@
 package io.github.derexxd.nosensesmod;
 
+import io.github.derexxd.nosensesmod.command.BlindCommand;
+import io.github.derexxd.nosensesmod.command.DeafCommand;
 import io.github.derexxd.nosensesmod.command.MuteCommand;
+import io.github.derexxd.nosensesmod.state.BlindState;
+import io.github.derexxd.nosensesmod.state.DeafState;
 import io.github.derexxd.nosensesmod.state.MuteState;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -14,12 +18,16 @@ public class Nosensesmod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
-                MuteCommand.register(dispatcher)
-        );
-        ServerPlayConnectionEvents.DISCONNECT.register((handler, server) ->
-                MuteState.clear(handler.player.getUuid())
-        );
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+            MuteCommand.register(dispatcher);
+            BlindCommand.register(dispatcher);
+            DeafCommand.register(dispatcher);
+        });
+        ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
+            MuteState.clear(handler.player.getUuid());
+            BlindState.clear(handler.player.getUuid());
+            DeafState.clear(handler.player.getUuid());
+        });
         LOGGER.info("NoSensesMod loaded");
     }
 }

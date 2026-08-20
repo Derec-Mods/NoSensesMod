@@ -1,4 +1,8 @@
 {
   "command.nosensesmod.mute.enabled": "Muted %s",
-  "command.nosensesmod.mute.disabled": "Unmuted %s"
+  "command.nosensesmod.mute.disabled": "Unmuted %s",
+  "command.nosensesmod.blind.enabled": "Blinded %s",
+  "command.nosensesmod.blind.disabled": "Unblinded %s",
+  "command.nosensesmod.deaf.enabled": "Deafened %s",
+  "command.nosensesmod.deaf.disabled": "Undeafened %s"
 }

@@ -1,9 +1,13 @@
 package io.github.derexxd.nosensesmod.client;
 
 import io.github.derexxd.nosensesmod.client.model.BlindfoldModel;
+import io.github.derexxd.nosensesmod.client.model.GagModel;
 import io.github.derexxd.nosensesmod.client.render.BlindfoldFeatureRenderer;
+import io.github.derexxd.nosensesmod.client.render.GagFeatureRenderer;
 import io.github.derexxd.nosensesmod.client.state.ClientBlindState;
+import io.github.derexxd.nosensesmod.client.state.ClientMuteState;
 import io.github.derexxd.nosensesmod.network.BlindSyncPayload;
+import io.github.derexxd.nosensesmod.network.MuteSyncPayload;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -16,17 +20,28 @@ public class NosensesmodClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         EntityModelLayerRegistry.registerModelLayer(BlindfoldModel.LAYER, BlindfoldModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(GagModel.LAYER, GagModel::getTexturedModelData);
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer instanceof PlayerEntityRenderer playerRenderer) {
                 registrationHelper.register(new BlindfoldFeatureRenderer(
                         playerRenderer,
                         new BlindfoldModel(context.getPart(BlindfoldModel.LAYER))
                 ));
+                registrationHelper.register(new GagFeatureRenderer(
+                        playerRenderer,
+                        new GagModel(context.getPart(GagModel.LAYER))
+                ));
             }
         });
         ClientPlayNetworking.registerGlobalReceiver(BlindSyncPayload.ID, (payload, context) -> context.client().execute(() ->
                 ClientBlindState.set(payload.playerId(), payload.blinded())
         ));
-        ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> ClientBlindState.clear());
+        ClientPlayNetworking.registerGlobalReceiver(MuteSyncPayload.ID, (payload, context) -> context.client().execute(() ->
+                ClientMuteState.set(payload.playerId(), payload.muted())
+        ));
+        ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
+            ClientBlindState.clear();
+            ClientMuteState.clear();
+        });
     }
 }

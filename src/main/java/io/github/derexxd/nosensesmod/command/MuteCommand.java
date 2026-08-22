@@ -2,6 +2,7 @@ package io.github.derexxd.nosensesmod.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
+import io.github.derexxd.nosensesmod.network.CosmeticSync;
 import io.github.derexxd.nosensesmod.state.MuteState;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.CommandManager;
@@ -24,7 +25,10 @@ public final class MuteCommand {
                                 .executes(context -> {
                                     ServerPlayerEntity target = EntityArgumentType.getPlayer(context, "player");
                                     boolean muted = MuteState.toggle(target.getUuid());
-                                    
+                                    if (target.getServer() != null) {
+                                        CosmeticSync.broadcastMute(target.getServer(), target.getUuid(), muted);
+                                    }
+
                                     SoundEvent sound = muted
                                             ? SoundEvents.ITEM_BUNDLE_INSERT
                                             : SoundEvents.ITEM_BUNDLE_REMOVE_ONE;

@@ -27,4 +27,8 @@ public final class MuteState {
     public static void clear(UUID playerId) {
         MUTED.remove(playerId);
     }
+
+    public static Set<UUID> snapshot() {
+        return Set.copyOf(MUTED);
+    }
 }

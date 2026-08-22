@@ -36,11 +36,9 @@ public final class MuteCommand {
                                         sourcePlayer.playSoundToPlayer(sound, SoundCategory.PLAYERS, 0.8f, pitch);
                                     }
 
-                                    String key = muted
-                                            ? "command.nosensesmod.mute.enabled"
-                                            : "command.nosensesmod.mute.disabled";
+                                    String prefix = muted ? "Muted " : "Unmuted ";
                                     context.getSource().sendFeedback(
-                                            () -> Text.translatable(key, target.getDisplayName()),
+                                            () -> Text.literal(prefix).append(target.getDisplayName()).append("!!"),
                                             true
                                     );
                                     return Command.SINGLE_SUCCESS;

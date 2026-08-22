@@ -42,11 +42,9 @@ public final class BlindCommand {
                                         sourcePlayer.playSoundToPlayer(sound, SoundCategory.PLAYERS, 0.8f, pitch);
                                     }
 
-                                    String key = blinded
-                                            ? "command.nosensesmod.blind.enabled"
-                                            : "command.nosensesmod.blind.disabled";
+                                    String prefix = blinded ? "Blinded " : "Unblinded ";
                                     context.getSource().sendFeedback(
-                                            () -> Text.translatable(key, target.getDisplayName()),
+                                            () -> Text.literal(prefix).append(target.getDisplayName()).append("!!"),
                                             true
                                     );
                                     return Command.SINGLE_SUCCESS;

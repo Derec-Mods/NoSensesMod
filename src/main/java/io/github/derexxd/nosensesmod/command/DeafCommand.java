@@ -36,11 +36,9 @@ public final class DeafCommand {
                                         sourcePlayer.playSoundToPlayer(sound, SoundCategory.PLAYERS, 0.8f, pitch);
                                     }
 
-                                    String key = deafened
-                                            ? "command.nosensesmod.deaf.enabled"
-                                            : "command.nosensesmod.deaf.disabled";
+                                    String prefix = deafened ? "Deafened " : "Undeafened ";
                                     context.getSource().sendFeedback(
-                                            () -> Text.translatable(key, target.getDisplayName()),
+                                            () -> Text.literal(prefix).append(target.getDisplayName()).append("!!"),
                                             true
                                     );
                                     return Command.SINGLE_SUCCESS;

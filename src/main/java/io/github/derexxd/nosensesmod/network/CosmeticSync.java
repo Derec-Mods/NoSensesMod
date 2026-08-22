@@ -1,6 +1,7 @@
 package io.github.derexxd.nosensesmod.network;
 
 import io.github.derexxd.nosensesmod.state.BlindState;
+import io.github.derexxd.nosensesmod.state.DeafState;
 import io.github.derexxd.nosensesmod.state.MuteState;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -36,6 +37,19 @@ public final class CosmeticSync {
     public static void sendAllMute(ServerPlayerEntity player) {
         for (UUID playerId : MuteState.snapshot()) {
             ServerPlayNetworking.send(player, new MuteSyncPayload(playerId, true));
+        }
+    }
+
+    public static void broadcastDeaf(MinecraftServer server, UUID playerId, boolean deafened) {
+        DeafSyncPayload payload = new DeafSyncPayload(playerId, deafened);
+        for (ServerPlayerEntity player : PlayerLookup.all(server)) {
+            ServerPlayNetworking.send(player, payload);
+        }
+    }
+
+    public static void sendAllDeaf(ServerPlayerEntity player) {
+        for (UUID playerId : DeafState.snapshot()) {
+            ServerPlayNetworking.send(player, new DeafSyncPayload(playerId, true));
         }
     }
 }

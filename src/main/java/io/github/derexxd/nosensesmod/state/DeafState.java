@@ -27,4 +27,8 @@ public final class DeafState {
     public static void clear(UUID playerId) {
         DEAFENED.remove(playerId);
     }
+
+    public static Set<UUID> snapshot() {
+        return Set.copyOf(DEAFENED);
+    }
 }

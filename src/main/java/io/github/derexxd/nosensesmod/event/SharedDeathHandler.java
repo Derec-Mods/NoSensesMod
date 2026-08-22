@@ -26,14 +26,14 @@ public final class SharedDeathHandler {
                 return;
             }
 
-            if (cascading) {
+            if (cascading || !isAffected(deadPlayer)) {
                 return;
             }
 
             try {
                 cascading = true;
                 for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-                    if (player != deadPlayer && player.isAlive()) {
+                    if (player != deadPlayer && player.isAlive() && isAffected(player)) {
                         player.damage(player.getServerWorld(), player.getDamageSources().genericKill(), Float.MAX_VALUE);
                     }
                 }
@@ -41,5 +41,9 @@ public final class SharedDeathHandler {
                 cascading = false;
             }
         });
+    }
+
+    private static boolean isAffected(ServerPlayerEntity player) {
+        return !player.isCreative() && !player.isSpectator();
     }
 }

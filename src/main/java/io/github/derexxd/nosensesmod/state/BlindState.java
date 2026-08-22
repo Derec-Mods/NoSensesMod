@@ -27,4 +27,8 @@ public final class BlindState {
     public static void clear(UUID playerId) {
         BLINDED.remove(playerId);
     }
+
+    public static Set<UUID> snapshot() {
+        return Set.copyOf(BLINDED);
+    }
 }

@@ -3,6 +3,7 @@ package io.github.derexxd.nosensesmod.command;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.derexxd.nosensesmod.effect.BlindEffects;
+import io.github.derexxd.nosensesmod.network.CosmeticSync;
 import io.github.derexxd.nosensesmod.state.BlindState;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.CommandManager;
@@ -29,6 +30,9 @@ public final class BlindCommand {
                                         BlindEffects.apply(target);
                                     } else {
                                         BlindEffects.remove(target);
+                                    }
+                                    if (target.getServer() != null) {
+                                        CosmeticSync.broadcastBlind(target.getServer(), target.getUuid(), blinded);
                                     }
 
                                     SoundEvent sound = blinded

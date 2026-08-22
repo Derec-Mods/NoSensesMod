@@ -8,6 +8,9 @@ import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 
 public final class BlindCommand {
@@ -27,6 +30,18 @@ public final class BlindCommand {
                                     } else {
                                         BlindEffects.remove(target);
                                     }
+
+                                    SoundEvent sound = blinded
+                                            ? SoundEvents.ENTITY_WARDEN_HEARTBEAT
+                                            : SoundEvents.BLOCK_BEACON_ACTIVATE;
+                                    float pitch = blinded ? 0.8f : 1.8f;
+                                    target.playSoundToPlayer(sound, SoundCategory.PLAYERS, 1.0f, pitch);
+
+                                    ServerPlayerEntity sourcePlayer = context.getSource().getPlayer();
+                                    if (sourcePlayer != null && sourcePlayer != target) {
+                                        sourcePlayer.playSoundToPlayer(sound, SoundCategory.PLAYERS, 0.8f, pitch);
+                                    }
+
                                     String key = blinded
                                             ? "command.nosensesmod.blind.enabled"
                                             : "command.nosensesmod.blind.disabled";

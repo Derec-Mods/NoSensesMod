@@ -5,6 +5,8 @@ import io.github.derexxd.nosensesmod.command.BlindCommand;
 import io.github.derexxd.nosensesmod.command.DeafCommand;
 import io.github.derexxd.nosensesmod.command.MuteCommand;
 import io.github.derexxd.nosensesmod.effect.BlindEffects;
+import io.github.derexxd.nosensesmod.event.SharedDeathHandler;
+import io.github.derexxd.nosensesmod.rule.ModGameRules;
 import io.github.derexxd.nosensesmod.state.BlindState;
 import io.github.derexxd.nosensesmod.state.DeafState;
 import io.github.derexxd.nosensesmod.state.MuteState;
@@ -20,6 +22,8 @@ public class Nosensesmod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ModGameRules.register();
+        SharedDeathHandler.register();
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             MuteCommand.register(dispatcher);
             BlindCommand.register(dispatcher);

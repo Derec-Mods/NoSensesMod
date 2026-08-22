@@ -4,5 +4,7 @@
   "command.nosensesmod.blind.enabled": "Blinded %s",
   "command.nosensesmod.blind.disabled": "Unblinded %s",
   "command.nosensesmod.deaf.enabled": "Deafened %s",
-  "command.nosensesmod.deaf.disabled": "Undeafened %s"
+  "command.nosensesmod.deaf.disabled": "Undeafened %s",
+  "gamerule.sharedDeath": "Shared Death",
+  "gamerule.sharedDeath.description": "If enabled, when one player dies, all players die."
 }

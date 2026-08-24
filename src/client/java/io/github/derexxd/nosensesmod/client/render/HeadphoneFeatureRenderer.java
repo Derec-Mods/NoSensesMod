@@ -3,6 +3,7 @@ package io.github.derexxd.nosensesmod.client.render;
 import io.github.derexxd.nosensesmod.client.model.HeadphoneModel;
 import io.github.derexxd.nosensesmod.client.state.ClientDeafState;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
@@ -33,7 +34,9 @@ public class HeadphoneFeatureRenderer extends FeatureRenderer<PlayerEntityRender
         }
 
         matrices.push();
-        this.getContextModel().getHead().rotate(matrices);
+        ModelPart head = this.getContextModel().getHead();
+        matrices.translate(head.pivotX / 16.0F, head.pivotY / 16.0F, head.pivotZ / 16.0F);
+        head.rotate(matrices);
         FeatureRenderer.renderModel(this.model, HeadphoneModel.TEXTURE, matrices, vertexConsumers, light, state, -1);
         matrices.pop();
     }

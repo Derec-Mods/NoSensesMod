@@ -24,15 +24,16 @@ public class HeadphoneModel extends EntityModel<PlayerEntityRenderState> {
     public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
         ModelPartData root = modelData.getRoot();
-        root.addChild("headband", ModelPartBuilder.create()
-                .uv(18, 5).cuboid(-7.5F, -2.0F, -2.0F, 1.0F, 4.0F, 4.0F, new Dilation(0.0F))
-                .uv(18, 13).cuboid(6.5F, -2.0F, -2.0F, 1.0F, 4.0F, 4.0F, new Dilation(0.0F))
-                .uv(0, 0).cuboid(-7.5F, -3.0F, -2.0F, 15.0F, 1.0F, 4.0F, new Dilation(0.0F)),
-                ModelTransform.pivot(0.0F, 24.0F, 0.0F));
-        root.addChild("earcups", ModelPartBuilder.create()
-                .uv(0, 5).cuboid(6.5F, 2.0F, -3.0F, 3.0F, 6.0F, 6.0F, new Dilation(0.0F))
-                .uv(0, 17).cuboid(-9.5F, 2.0F, -3.0F, 3.0F, 6.0F, 6.0F, new Dilation(0.0F)),
-                ModelTransform.pivot(0.0F, 24.0F, 0.0F));
+        ModelPartData head = root.addChild("head", ModelPartBuilder.create(), ModelTransform.NONE);
+        head.addChild("headband", ModelPartBuilder.create()
+                .uv(18, 5).cuboid(-7.5F, -10.0F, -2.0F, 1.0F, 4.0F, 4.0F, new Dilation(0.0F))
+                .uv(18, 13).cuboid(6.5F, -10.0F, -2.0F, 1.0F, 4.0F, 4.0F, new Dilation(0.0F))
+                .uv(0, 0).cuboid(-7.5F, -11.0F, -2.0F, 15.0F, 1.0F, 4.0F, new Dilation(0.0F)),
+                ModelTransform.NONE);
+        head.addChild("earcups", ModelPartBuilder.create()
+                .uv(0, 5).cuboid(6.5F, -6.0F, -3.0F, 3.0F, 6.0F, 6.0F, new Dilation(0.0F))
+                .uv(0, 17).cuboid(-9.5F, -6.0F, -3.0F, 3.0F, 6.0F, 6.0F, new Dilation(0.0F)),
+                ModelTransform.NONE);
         return TexturedModelData.of(modelData, 64, 64);
     }
 }

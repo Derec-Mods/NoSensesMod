@@ -27,27 +27,17 @@ public class BlindfoldModel extends EntityModel<PlayerEntityRenderState> {
         ModelPartData outerBand = root.addChild("OuterBand", ModelPartBuilder.create(), ModelTransform.pivot(5.0F, 24.0F, 5.0F));
 
         ModelPartData outerBand2 = outerBand.addChild("OuterBand2", ModelPartBuilder.create()
-                .uv(0, 0).cuboid(1.0F, -31.0F, -11.0F, 1.0F, 5.0F, 12.0F, new Dilation(0.0F))
-                .uv(0, 0).cuboid(-12.0F, -31.0F, -11.0F, 1.0F, 5.0F, 12.0F, new Dilation(0.0F))
-                .uv(0, 0).cuboid(-11.0F, -31.0F, 1.0F, 12.0F, 5.0F, 1.0F, new Dilation(0.0F))
-                .uv(0, 1).cuboid(-11.0F, -31.0F, -12.0F, 12.0F, 5.0F, 1.0F, new Dilation(0.0F)),
+                .uv(1, 1).cuboid(0.0F, -31.0F, -10.0F, 1.0F, 5.0F, 11.0F, new Dilation(0.0F))
+                .uv(1, 1).cuboid(-11.0F, -31.0F, -10.0F, 1.0F, 5.0F, 11.0F, new Dilation(0.0F))
+                .uv(1, 0).cuboid(-10.0F, -31.0F, 0.0F, 10.0F, 5.0F, 1.0F, new Dilation(0.0F))
+                .uv(0, 1).cuboid(-11.0F, -31.0F, -11.0F, 12.0F, 5.0F, 1.0F, new Dilation(0.0F)),
                 ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 
-        outerBand2.addChild("InnerBand", ModelPartBuilder.create()
-                .uv(3, 5).cuboid(-1.0F, -31.0F, 0.0F, 1.0F, 5.0F, 1.0F, new Dilation(0.0F))
-                .uv(5, 7).cuboid(-10.0F, -31.0F, 0.0F, 1.0F, 5.0F, 1.0F, new Dilation(0.0F))
-                .uv(16, 4).cuboid(-10.0F, -31.0F, -11.0F, 1.0F, 5.0F, 1.0F, new Dilation(0.0F))
-                .uv(14, 8).cuboid(-1.0F, -31.0F, -11.0F, 1.0F, 5.0F, 1.0F, new Dilation(0.0F))
-                .uv(2, 13).cuboid(0.0F, -31.0F, -11.0F, 1.0F, 5.0F, 2.0F, new Dilation(0.0F))
-                .uv(13, 2).cuboid(0.0F, -31.0F, -1.0F, 1.0F, 5.0F, 2.0F, new Dilation(0.0F))
-                .uv(15, 1).cuboid(-11.0F, -31.0F, -1.0F, 1.0F, 5.0F, 2.0F, new Dilation(0.0F))
-                .uv(15, 5).cuboid(-11.0F, -31.0F, -11.0F, 1.0F, 5.0F, 2.0F, new Dilation(0.0F)),
-                ModelTransform.pivot(0.0F, 0.0F, 0.0F));
-
+        outerBand2.addChild("InnerBand", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
         outerBand2.addChild("Hang", ModelPartBuilder.create()
                 .uv(19, 18).cuboid(-1.0F, -26.0F, -12.0F, 1.0F, 4.0F, 1.0F, new Dilation(0.0F))
                 .uv(16, 7).cuboid(-2.0F, -26.0F, -12.0F, 1.0F, 6.0F, 1.0F, new Dilation(0.0F)),
-                ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+                ModelTransform.pivot(0.0F, 0.0F, 1.0F));
 
         return TexturedModelData.of(modelData, 32, 32);
     }

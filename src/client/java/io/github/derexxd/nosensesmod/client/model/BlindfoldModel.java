@@ -27,17 +27,17 @@ public class BlindfoldModel extends EntityModel<PlayerEntityRenderState> {
         ModelPartData outerBand = root.addChild("OuterBand", ModelPartBuilder.create(), ModelTransform.pivot(5.0F, 24.0F, 5.0F));
 
         ModelPartData outerBand2 = outerBand.addChild("OuterBand2", ModelPartBuilder.create()
-                .uv(1, 1).cuboid(0.0F, -31.0F, -10.0F, 1.0F, 5.0F, 11.0F, new Dilation(0.0F))
-                .uv(1, 1).cuboid(-11.0F, -31.0F, -10.0F, 1.0F, 5.0F, 11.0F, new Dilation(0.0F))
-                .uv(1, 0).cuboid(-10.0F, -31.0F, 0.0F, 10.0F, 5.0F, 1.0F, new Dilation(0.0F))
-                .uv(0, 1).cuboid(-11.0F, -31.0F, -11.0F, 12.0F, 5.0F, 1.0F, new Dilation(0.0F)),
+                .uv(2, 2).cuboid(-1.0F, -31.0F, -10.0F, 1.0F, 5.0F, 10.0F, new Dilation(0.0F))
+                .uv(3, 3).cuboid(-10.0F, -31.0F, -10.0F, 1.0F, 5.0F, 9.0F, new Dilation(0.0F))
+                .uv(1, 0).cuboid(-10.0F, -31.0F, -1.0F, 9.0F, 5.0F, 1.0F, new Dilation(0.0F))
+                .uv(2, 1).cuboid(-9.0F, -31.0F, -10.0F, 8.0F, 5.0F, 1.0F, new Dilation(0.0F)),
                 ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 
         outerBand2.addChild("InnerBand", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
         outerBand2.addChild("Hang", ModelPartBuilder.create()
                 .uv(19, 18).cuboid(-1.0F, -26.0F, -12.0F, 1.0F, 4.0F, 1.0F, new Dilation(0.0F))
                 .uv(16, 7).cuboid(-2.0F, -26.0F, -12.0F, 1.0F, 6.0F, 1.0F, new Dilation(0.0F)),
-                ModelTransform.pivot(0.0F, 0.0F, 1.0F));
+                ModelTransform.pivot(-1.0F, 0.0F, 2.0F));
 
         return TexturedModelData.of(modelData, 32, 32);
     }

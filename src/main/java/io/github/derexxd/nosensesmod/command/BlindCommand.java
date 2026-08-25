@@ -2,10 +2,10 @@ package io.github.derexxd.nosensesmod.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
-import io.github.derexxd.nosensesmod.effect.BlindEffects;
 import io.github.derexxd.nosensesmod.network.CosmeticSync;
 import io.github.derexxd.nosensesmod.state.BlindState;
 import net.minecraft.command.argument.EntityArgumentType;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -26,11 +26,7 @@ public final class BlindCommand {
                                 .executes(context -> {
                                     ServerPlayerEntity target = EntityArgumentType.getPlayer(context, "player");
                                     boolean blinded = BlindState.toggle(target.getUuid());
-                                    if (blinded) {
-                                        BlindEffects.apply(target);
-                                    } else {
-                                        BlindEffects.remove(target);
-                                    }
+                                    target.removeStatusEffect(StatusEffects.DARKNESS);
                                     if (target.getServer() != null) {
                                         CosmeticSync.broadcastBlind(target.getServer(), target.getUuid(), blinded);
                                     }

@@ -4,7 +4,6 @@ import io.github.derexxd.nosensesmod.chat.MuteChat;
 import io.github.derexxd.nosensesmod.command.BlindCommand;
 import io.github.derexxd.nosensesmod.command.DeafCommand;
 import io.github.derexxd.nosensesmod.command.MuteCommand;
-import io.github.derexxd.nosensesmod.effect.BlindEffects;
 import io.github.derexxd.nosensesmod.event.SharedDeathHandler;
 import io.github.derexxd.nosensesmod.network.BlindSyncPayload;
 import io.github.derexxd.nosensesmod.network.DeafSyncPayload;
@@ -37,7 +36,6 @@ public class Nosensesmod implements ModInitializer {
             BlindCommand.register(dispatcher);
             DeafCommand.register(dispatcher);
         });
-        BlindEffects.register();
         MuteChat.register();
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             CosmeticSync.sendAllBlind(handler.player);

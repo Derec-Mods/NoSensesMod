@@ -13,9 +13,11 @@ import io.github.derexxd.nosensesmod.network.BlindSyncPayload;
 import io.github.derexxd.nosensesmod.network.DeafSyncPayload;
 import io.github.derexxd.nosensesmod.network.MuteSyncPayload;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 
@@ -56,5 +58,7 @@ public class NosensesmodClient implements ClientModInitializer {
             ClientMuteState.clear();
             ClientDeafState.clear();
         });
+        ClientTickEvents.END_CLIENT_TICK.register(BlindPulse::tick);
+        HudRenderCallback.EVENT.register((context, tickCounter) -> BlindPulse.renderOverlay(context));
     }
 }

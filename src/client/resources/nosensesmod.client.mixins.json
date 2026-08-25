@@ -4,7 +4,8 @@
   "package": "io.github.derexxd.nosensesmod.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "BackgroundRendererMixin"
+    "BackgroundRendererMixin",
+    "EntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -8,9 +8,8 @@ public final class CosmeticFit {
         if (playerName == null) {
             return 0.0F;
         }
-        return switch (playerName) {
+        return switch (playerName.toLowerCase()) {
             case "plazamc", "lolfrosty" -> 1.0F;
-            case "AnimalMace", "iShoya" -> 0.0F;
             default -> 0.0F;
         };
     }

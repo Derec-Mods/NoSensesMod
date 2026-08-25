@@ -1,5 +1,6 @@
 package io.github.derexxd.nosensesmod.client.render;
 
+import io.github.derexxd.nosensesmod.client.CosmeticFit;
 import io.github.derexxd.nosensesmod.client.model.BlindfoldModel;
 import io.github.derexxd.nosensesmod.client.state.ClientBlindState;
 import net.minecraft.client.MinecraftClient;
@@ -34,6 +35,7 @@ public class BlindfoldFeatureRenderer extends FeatureRenderer<PlayerEntityRender
 
         matrices.push();
         this.getContextModel().getHead().rotate(matrices);
+        matrices.translate(0.0F, CosmeticFit.blindfoldY(state.name) / 16.0F, 0.0F);
         FeatureRenderer.renderModel(this.model, BlindfoldModel.TEXTURE, matrices, vertexConsumers, light, state, -1);
         matrices.pop();
     }

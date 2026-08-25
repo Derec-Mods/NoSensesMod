@@ -14,6 +14,7 @@ public final class CosmeticFit {
             case "AnimalMace" -> BLINDFOLD_Y;
             case "lolfrosty" -> BLINDFOLD_Y;
             case "iShoya" -> BLINDFOLD_Y;
+            case "plazamc" -> 1.0F;
             default -> 0.0F;
         };
     }

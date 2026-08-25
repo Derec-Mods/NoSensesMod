@@ -12,7 +12,7 @@ public final class CosmeticFit {
         }
         return switch (playerName) {
             case "AnimalMace" -> BLINDFOLD_Y;
-            case "lolfrosty" -> BLINDFOLD_Y + 1.0F;
+            case "lolfrosty" -> 1.0F;
             case "iShoya" -> BLINDFOLD_Y;
             case "plazamc" -> 1.0F;
             default -> 0.0F;

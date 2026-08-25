@@ -1,7 +1,6 @@
 package io.github.derexxd.nosensesmod.client;
 
 import io.github.derexxd.nosensesmod.client.model.BlindfoldModel;
-import io.github.derexxd.nosensesmod.client.model.GagModel;
 import io.github.derexxd.nosensesmod.client.model.HeadphoneModel;
 import io.github.derexxd.nosensesmod.client.render.BlindfoldFeatureRenderer;
 import io.github.derexxd.nosensesmod.client.render.GagFeatureRenderer;
@@ -26,7 +25,6 @@ public class NosensesmodClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         EntityModelLayerRegistry.registerModelLayer(BlindfoldModel.LAYER, BlindfoldModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(GagModel.LAYER, GagModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(HeadphoneModel.LAYER, HeadphoneModel::getTexturedModelData);
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer instanceof PlayerEntityRenderer playerRenderer) {
@@ -34,10 +32,7 @@ public class NosensesmodClient implements ClientModInitializer {
                         playerRenderer,
                         new BlindfoldModel(context.getPart(BlindfoldModel.LAYER))
                 ));
-                registrationHelper.register(new GagFeatureRenderer(
-                        playerRenderer,
-                        new GagModel(context.getPart(GagModel.LAYER))
-                ));
+                registrationHelper.register(new GagFeatureRenderer(playerRenderer));
                 registrationHelper.register(new HeadphoneFeatureRenderer(
                         playerRenderer,
                         new HeadphoneModel(context.getPart(HeadphoneModel.LAYER))

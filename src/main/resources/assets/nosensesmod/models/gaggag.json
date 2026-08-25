@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "nosensesmod:entity/gagtape",
+		"particle": "nosensesmod:entity/gagtape"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 0],
+			"to": [12, 2, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 0]},
+			"faces": {
+				"north": {"uv": [0.28125, 0.10938, 8.28125, 3.10938], "texture": "#0"},
+				"east": {"uv": [7.28125, 0.10938, 8.28125, 3.10938], "texture": "#0"},
+				"south": {"uv": [0.28125, 0.10938, 8.28125, 3.10938], "texture": "#0"},
+				"west": {"uv": [0.28125, 0.10938, 1.28125, 3.10938], "texture": "#0"},
+				"up": {"uv": [0.28125, 0.10938, 8.28125, 0.60938], "texture": "#0"},
+				"down": {"uv": [0.28125, 2.60938, 8.28125, 3.10938], "texture": "#0"}
+			}
+		}
+	]
+}

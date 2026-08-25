@@ -12,11 +12,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 
 public class GagFeatureRenderer extends FeatureRenderer<PlayerEntityRenderState, PlayerEntityModel> {
-    private final GagModel model;
-
-    public GagFeatureRenderer(FeatureRendererContext<PlayerEntityRenderState, PlayerEntityModel> context, GagModel model) {
+    public GagFeatureRenderer(FeatureRendererContext<PlayerEntityRenderState, PlayerEntityModel> context) {
         super(context);
-        this.model = model;
     }
 
     @Override
@@ -34,7 +31,8 @@ public class GagFeatureRenderer extends FeatureRenderer<PlayerEntityRenderState,
 
         matrices.push();
         this.getContextModel().getHead().rotate(matrices);
-        FeatureRenderer.renderModel(this.model, GagModel.TEXTURE, matrices, vertexConsumers, light, state, -1);
+        matrices.scale(1.0F / 16.0F, 1.0F / 16.0F, 1.0F / 16.0F);
+        GagModel.render(matrices, vertexConsumers, light);
         matrices.pop();
     }
 

@@ -88,12 +88,6 @@ java {
     withSourcesJar()
 }
 
-jar {
-    from("LICENSE.txt") {
-        rename { "LICENSE_${project.archives_base_name}" }
-    }
-}
-
 // configure the maven publication
 publishing {
     publications {

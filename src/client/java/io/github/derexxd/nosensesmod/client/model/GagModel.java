@@ -15,7 +15,7 @@ public final class GagModel {
     private static final float Y0 = -2.0F;
     private static final float X1 = 4.0F;
     private static final float Y1 = 0.0F;
-    private static final float Z = -4.55F;
+    private static final float Z = -4.08F;
 
     private static final float U0 = 0.28125F / 16.0F;
     private static final float V0 = 0.10938F / 16.0F;

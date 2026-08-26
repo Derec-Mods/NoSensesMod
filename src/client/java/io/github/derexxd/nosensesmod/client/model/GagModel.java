@@ -11,12 +11,12 @@ import net.minecraft.util.Identifier;
 public final class GagModel {
     public static final Identifier TEXTURE = Identifier.of(Nosensesmod.MOD_ID, "textures/entity/gagtape.png");
 
-    private static final float X0 = -4.0F;
-    private static final float Y0 = -2.0F;
-    private static final float Z0 = -5.0F;
-    private static final float X1 = 4.0F;
-    private static final float Y1 = 0.0F;
-    private static final float Z1 = -3.0F;
+    private static final float X0 = -4.25F;
+    private static final float Y0 = -1.8F;
+    private static final float Z0 = -7.25F;
+    private static final float X1 = 4.25F;
+    private static final float Y1 = 0.2F;
+    private static final float Z1 = -5.25F;
 
     private static final float U0 = 0.28125F / 16.0F;
     private static final float V0 = 0.10938F / 16.0F;

@@ -42,7 +42,7 @@ public final class BlindPulse {
             return;
         }
         float closed = 1.0F - openness(MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(false));
-        int alpha = (int) (40.0F + closed * 140.0F);
+        int alpha = (int) (90.0F + closed * 140.0F);
         context.fill(0, 0, context.getScaledWindowWidth(), context.getScaledWindowHeight(), alpha << 24);
     }
 }

@@ -39,7 +39,7 @@ public abstract class BackgroundRendererMixin {
             CallbackInfoReturnable<Vector4f> cir
     ) {
         Vector4f color = BlindVision.color(cir.getReturnValue());
-        if (color != cir.getReturnValue()) {
+        if (color != null) {
             cir.setReturnValue(color);
         }
     }

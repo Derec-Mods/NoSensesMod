@@ -18,7 +18,7 @@ import org.joml.Quaternionf;
 public final class MuteIconRenderer {
     public static final Identifier TEXTURE = Identifier.of(Nosensesmod.MOD_ID, "textures/gui/muted.png");
     private static final float SIZE = 0.28F;
-    private static final float ABOVE_NAMETAG = 0.72F;
+    private static final float ABOVE_NAMETAG = 0.90F;
 
     private MuteIconRenderer() {
     }

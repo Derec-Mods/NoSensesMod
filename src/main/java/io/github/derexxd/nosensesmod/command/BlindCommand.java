@@ -32,9 +32,9 @@ public final class BlindCommand {
                                     }
 
                                     SoundEvent sound = blinded
-                                            ? SoundEvents.ENTITY_WARDEN_HEARTBEAT
+                                            ? SoundEvents.ITEM_ARMOR_EQUIP_LEATHER.value()
                                             : SoundEvents.BLOCK_BEACON_ACTIVATE;
-                                    float pitch = blinded ? 0.8f : 1.8f;
+                                    float pitch = blinded ? 0.9f : 1.8f;
                                     target.playSoundToPlayer(sound, SoundCategory.PLAYERS, 1.0f, pitch);
 
                                     ServerPlayerEntity sourcePlayer = context.getSource().getPlayer();

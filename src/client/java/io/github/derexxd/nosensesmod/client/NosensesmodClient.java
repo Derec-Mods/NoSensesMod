@@ -12,7 +12,6 @@ import io.github.derexxd.nosensesmod.network.BlindSyncPayload;
 import io.github.derexxd.nosensesmod.network.DeafSyncPayload;
 import io.github.derexxd.nosensesmod.network.MuteSyncPayload;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -53,7 +52,6 @@ public class NosensesmodClient implements ClientModInitializer {
             ClientMuteState.clear();
             ClientDeafState.clear();
         });
-        ClientTickEvents.END_CLIENT_TICK.register(BlindPulse::tick);
-        HudRenderCallback.EVENT.register((context, tickCounter) -> BlindPulse.renderOverlay(context));
+        HudRenderCallback.EVENT.register((context, tickCounter) -> BlindVision.renderOverlay(context));
     }
 }

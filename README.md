@@ -1,9 +1,5 @@
-
-
 Credits:
 
-DerexXD
-
-Blindfold texture / model by TeideG
-
-Mute texture by thewowelite
+- DerexXD
+- Blindfold texture / model by TeideG
+- Deafen model inspired by thewowelite
